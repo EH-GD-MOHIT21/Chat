@@ -1,1 +1,2 @@
-daphne manager.asgi:application
+web: daphne manager.asgi:application
+release: python manage.py migrate --noinput
