@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1','nestedchat.herokuapp.com']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'whitenoise.runserver_nostatic',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,9 +138,7 @@ PASS_SENDER = "qwerty@123"
 
 BASE_URL = 'http://127.0.0.1:8000/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'build/static')
-]
+STATIC_ROOT = os.path.join(BASE_DIR,'build/static')
 
 CSRF_COOKIE_NAME = "X-CSRFToken"
 
