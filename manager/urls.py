@@ -28,6 +28,8 @@ urlpatterns = [
     path('',include('chatroom.urls')),
 ]
 
+urlpatterns += [url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})]
+
 urlobjs = [
     url(r'^public/(?P<path>.*)$', serve,{'document_root': settings.OTHER_STATICS})
 ]
