@@ -8,16 +8,16 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/asgi/
 """
 
 import os
+from django.conf.urls import url
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'manager.settings')
+
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 from django.core.asgi import get_asgi_application
 import chatroom.routing
 from django.conf import settings
-try:
-    settings.configure()
-except:
-    pass
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'manager.settings')
+
 
 
 application = ProtocolTypeRouter({
@@ -26,5 +26,5 @@ application = ProtocolTypeRouter({
         URLRouter(
             chatroom.routing.websocket_urlpatterns
         )
-    ),
+    )
 })
