@@ -18,6 +18,22 @@ import PrivateChatRoom from './components/PrivateChatRoom';
 import PrivateChat from './components/PrivateChat';
 
 function App() {
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
   return (
     <Router>
       <Switch>
@@ -37,21 +53,21 @@ function App() {
           <ForgotPass />
         </Route>
         <Route exact path="/chat">
-          <Chat />
+          <Chat getCookie={getCookie}/>
         </Route>
 
         <Route exact path="/privatechat">
-          <PrivateChat />
+          <PrivateChat getCookie={getCookie}/>
         </Route>
 
         <Route path="/validate/user=:user/token=:token">
           <PassChanger />
         </Route>
         <Route path="/chat/private/:roomname">
-          <PrivateChatRoom />
+          <PrivateChatRoom getCookie={getCookie}/>
         </Route>
         <Route path="/chat/:roomname">
-          <ChatPage />
+          <ChatPage getCookie={getCookie}/>
         </Route>
         <Route exact path="/">
           <HomePage />

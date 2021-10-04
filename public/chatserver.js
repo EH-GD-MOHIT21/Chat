@@ -56,11 +56,11 @@ chatSocket.onmessage = function(e) {
     if (!data.ext) {
         if (!alignright) {
             document.querySelector('#chat-log').innerHTML += (
-                '<div class="newmessage">' + '<div class="username alignleft">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignleft">' + (data.message + '\n') + '</div>' + '</div>'
+                '<div class="newmessage">' + '<div class="username alignleft">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignleft">' + (data.message + '\n') + '</div>' + '<div class="alignleft timestamp">' + new Date() + '</div>' + '</div>'
             )
         } else {
             document.querySelector('#chat-log').innerHTML += (
-                '<div class="rightablecontent">' + '<div class="sendnewmessage">' + '<div class="username alignright">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignright">' + (data.message + '\n') + '</div>' + '</div>' + '</div>'
+                '<div class="rightablecontent">' + '<div class="sendnewmessage">' + '<div class="username alignright">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignright">' + (data.message + '\n') + '</div>' + '<div class="alignright timestamp">' + new Date() + '</div>' + '</div>' + '</div>'
             )
         }
     } else {

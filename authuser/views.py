@@ -38,8 +38,14 @@ class register(APIView):
         state,message = islimitdone(email_r)
         if state:
             otp = createTpsStorage(data)
-            sendmail(to=email_r,otp=otp,)
-            return Response({'status':HTTP_200_OK,'message':'otp send on mailid.'})
+            status = sendmail(to=email_r,otp=otp,)
+            if status == 'success':
+                return Response({'status':HTTP_200_OK,'message':'otp send on mailid.'})
+            try:
+                TPS.objects.get(email=data["email"]).delete()
+            except:
+                pass
+            return Response({'status':HTTP_500_INTERNAL_SERVER_ERROR,'message':'otp not send Recaptcha Error.'})
         else:
             return Response({'status':HTTP_408_REQUEST_TIMEOUT,'message':message})
 
