@@ -1,4 +1,11 @@
 let url = document.URL
+let RelativeURL = document.URL.split('/')
+
+const roomName = RelativeURL[RelativeURL.length - 1];
+
+if(url.includes('https')){
+    window.location.href = "http://nestedchat.herokuapp.com/chat/"+roomName;
+}
 
 async function DealUser() {
     let response = await fetch('/auth/getusername', {
@@ -26,10 +33,6 @@ async function DealUser() {
 alignright = false
 DealUser()
 
-let RelativeURL = document.URL.split('/')
-
-const roomName = RelativeURL[RelativeURL.length - 1];
-
 document.getElementById('groupname').innerText += roomName;
 
 const chatSocket = new WebSocket(
@@ -56,11 +59,11 @@ chatSocket.onmessage = function(e) {
     if (!data.ext) {
         if (!alignright) {
             document.querySelector('#chat-log').innerHTML += (
-                '<div class="newmessage">' + '<div class="username alignleft">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignleft">' + (data.message + '\n') + '</div>' + '<div class="alignleft timestamp">' + new Date() + '</div>' + '</div>'
+                '<div class="newmessage">' + '<div class="username alignleft">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignleft">' + (data.message + '\n') + '</div>' + '</div>'
             )
         } else {
             document.querySelector('#chat-log').innerHTML += (
-                '<div class="rightablecontent">' + '<div class="sendnewmessage">' + '<div class="username alignright">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignright">' + (data.message + '\n') + '</div>' + '<div class="alignright timestamp">' + new Date() + '</div>' + '</div>' + '</div>'
+                '<div class="rightablecontent">' + '<div class="sendnewmessage">' + '<div class="username alignright">' + (data.user + " :" + '\n') + '</div>' + '<div class="message alignright">' + (data.message + '\n') + '</div>' + '</div>' + '</div>'
             )
         }
     } else {
