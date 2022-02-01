@@ -90,7 +90,7 @@
     word-wrap: break-word;
     word-break: break-all;
     background: rgba(239, 234, 226, 0.7);
-    background-image: url("http://127.0.0.1:8000/public/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png");
+    background-image: url("https://nestedchat.herokuapp.com/public/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png");
     background-position: center center;
     background-blend-mode: soft-light;
 }
@@ -291,7 +291,7 @@
 .passchangerContainer,
 .parentchatroomcontainer {
     background: rgb(112, 116, 116);
-    background-image: url("http://127.0.0.1:8000/public/bg.jpeg");
+    background-image: url("https://nestedchat.herokuapp.com/public/bg.jpeg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
