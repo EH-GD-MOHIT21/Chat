@@ -1,5 +1,13 @@
 let url = document.URL
 
+let RelativeURL = document.URL.split('/')
+
+const roomName = RelativeURL[RelativeURL.length - 1];
+
+if(url.includes('https')){
+    window.location.href = "http://nestedchat.herokuapp.com/chat/private/"+roomName;
+}
+
 async function DealUser() {
     let response = await fetch('/auth/getusername', {
         credentials: 'include',
@@ -26,10 +34,6 @@ async function DealUser() {
 alignright = false
 DealUser()
 
-
-let RelativeURL = document.URL.split('/')
-
-const roomName = RelativeURL[RelativeURL.length - 1];
 
 document.getElementById('groupname').innerText += ("private " + roomName);
 
