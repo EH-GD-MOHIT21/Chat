@@ -5,6 +5,7 @@ let RelativeURL = document.URL.split('/')
 const roomName = RelativeURL[RelativeURL.length - 1];
 
 if(url.includes('https')){
+    console.log(url);
     window.location.href = "http://nestedchat.herokuapp.com/chat/private/"+roomName;
 }
 
